@@ -1,0 +1,3046 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Web API Express",
+        "description": "My WebApi using Node",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Usuario",
+            "description": "API de usuarios de la aplicación"
+        },
+        {
+            "name": "Jugador",
+            "description": "API de jugadores en la aplicación"
+        },
+        {
+            "name": "Avatar",
+            "description": "API de avatars en la aplicación"
+        },
+        {
+            "name": "Question&Answer",
+            "description": "API de Question&Answers"
+        },
+        {
+            "name": "MemoryGame",
+            "description": "API de avatars en la aplicación"
+        },
+        {
+            "name": "Game",
+            "description": "API de tablas de administración del juego"
+        },
+        {
+            "name": "Document",
+            "description": "API de Documentos de entrenamiento"
+        },
+        {
+            "name": "Group",
+            "description": "API de Grupos"
+        },
+        {
+            "name": "Level",
+            "description": "API de Niveles"
+        },
+        {
+            "name": "UserType",
+            "description": "API de Tipos de Usuario"
+        },
+        {
+            "name": "MiniGame",
+            "description": "API de Minijuegos"
+        },
+        {
+            "name": "LevelGroupMiniGame",
+            "description": "API de Nivel Grupo Minijuegos"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/getUsuarios": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Obtiene todos los usuarios",
+                "description": "Regresa todos los usuarios",
+                "operationId": "getUsuarios",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getUsuario/{id}": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Encuentra un usuario por id",
+                "description": "Regresa el usuario con el id solicitado",
+                "operationId": "getUsuario",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del usuario a consultar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addUsuario": {
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Agrega un nuevo usuario",
+                "description": "Agrega un usuario a la base de datos",
+                "operationId": "addUsuario",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo jugador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/createUser": {
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Agrega un nuevo usuario",
+                "description": "Agrega un usuario a la base de datos",
+                "operationId": "createUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo jugador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateUsuario/{id}": {
+            "put": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Actualiza un usuario",
+                "description": "Actualiza un usuario a la base de datos",
+                "operationId": "updateUsuario",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del usuario a actualizar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Usuario"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/updateUserPassword/{user_id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Actualiza el password de un usuario",
+                "description": "Actualiza el password de un usuario de la base de datos",
+                "operationId": "updateUserPassword",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Id del usuario a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserPassword"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/updateUserLastLogin/{user_id}": {
+            "put": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Actualiza la fecha del último login de un usuario",
+                "description": "Actualiza la fecha del último login de un usuario en la base de datos",
+                "operationId": "updateUserLastLogin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Id del usuario a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserLastLogin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserLastLogin"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteUser/{user_id}": {
+            "delete": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Inactiva un usuario",
+                "description": "Inactiva un usuario de la base de datos",
+                "operationId": "deleteUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "Id del jugador a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getPlayers": {
+            "get": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Obtiene todos los jugadores",
+                "description": "Regresa todos los jugadores",
+                "operationId": "getPlayers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/PlayerUserAvatar"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getRanking": {
+            "get": {
+                "tags": [
+                    "Jugador"
+                ],
+                "summary": "Obtiene todos los jugadores",
+                "description": "Regresa todos los jugadores",
+                "operationId": "getRanking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Jugador"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getJugador/{id}": {
+            "get": {
+                "tags": [
+                    "Jugador"
+                ],
+                "summary": "Encuentra un jugador por id",
+                "description": "Regresa el jugador con el id solicitado",
+                "operationId": "getJugador",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del usuario a consultaar",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Jugador"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addPlayer": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Agrega un nuevo jugador",
+                "description": "Agrega un jugador a la base de datos",
+                "operationId": "addPlayer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo jugador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Player"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Player"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updatePlayer/{id}": {
+            "put": {
+                "tags": [
+                    "Jugador"
+                ],
+                "summary": "Actualiza un  jugador",
+                "description": "Actualiza un jugador a la base de datos",
+                "operationId": "updatePlayer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id del jugador a actualizar",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevos jugador",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Jugador"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Jugador"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deletePlayer/{player_id}": {
+            "delete": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Borra un jugador",
+                "description": "Borra un jugador de la base de datos",
+                "operationId": "deletePlayer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "player_id",
+                        "description": "Id del jugador a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Player"
+                        }
+                    },
+                    "400": {
+                        "description": "Jugador Inválido"
+                    },
+                    "404": {
+                        "description": "Jugador no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getAvatars": {
+            "get": {
+                "tags": [
+                    "Avatar"
+                ],
+                "summary": "Obtiene todos los avatars",
+                "description": "Regresa todos los avatars",
+                "operationId": "getAvatars",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getAvatar/{avatar_id}": {
+            "get": {
+                "tags": [
+                    "Avatar"
+                ],
+                "summary": "Encuentra un avatar por id",
+                "description": "Regresa el jugador con el id solicitado",
+                "operationId": "getAvatar",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "avatar_id",
+                        "description": "Id del avatar a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addAvatar": {
+            "post": {
+                "tags": [
+                    "Avatar"
+                ],
+                "summary": "Agrega un nuevo avatar",
+                "description": "Agrega un avatar a la base de datos",
+                "operationId": "addAvatar",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo avatar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateAvatar/{avatar_id}": {
+            "put": {
+                "tags": [
+                    "Avatar"
+                ],
+                "summary": "Actualiza un avatar",
+                "description": "Actualiza un avatar en la base de datos",
+                "operationId": "updateAvatar",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "avatar_id",
+                        "description": "Id del avatar a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo avatar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    },
+                    "400": {
+                        "description": "Avatar Inválido"
+                    },
+                    "404": {
+                        "description": "Avatar no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteAvatar/{avatar_id}": {
+            "delete": {
+                "tags": [
+                    "Avatar"
+                ],
+                "summary": "Borra un avatar",
+                "description": "Borra un avatar de la base de datos",
+                "operationId": "deleteAvatar",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "avatar_id",
+                        "description": "Id del avatar a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Avatar"
+                        }
+                    },
+                    "400": {
+                        "description": "Avatar Inválido"
+                    },
+                    "404": {
+                        "description": "Avatar no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getQuestions": {
+            "get": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Obtiene todos las preguntas",
+                "description": "Regresa todos los preguntas",
+                "operationId": "getQuestions",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getQuestion/{question_id}": {
+            "get": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Encuentra una pregunta por id",
+                "description": "Regresa la pregunta con el id solicitado",
+                "operationId": "getQuestion",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "question_id",
+                        "description": "Id de la pregunta a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addQuestion": {
+            "post": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Agrega una nueva pregunta",
+                "description": "Agrega una pregunta a la base de datos",
+                "operationId": "addQuestion",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nueva pregunta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateQuestion/{question_id}": {
+            "put": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Actualiza una pregunta",
+                "description": "Actualiza una pregunta en la base de datos",
+                "operationId": "updateQuestion",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "question_id",
+                        "description": "Id de la pregunta a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nueva pregunta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    },
+                    "400": {
+                        "description": "Pregunta Inválido"
+                    },
+                    "404": {
+                        "description": "Pregunta no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteQuestion/{question_id}": {
+            "delete": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Borra una pregunta",
+                "description": "Borra una pregunta de la base de datos",
+                "operationId": "deleteQuestion",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "question_id",
+                        "description": "Id de la pregunta a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    },
+                    "400": {
+                        "description": "Pregunta Inválido"
+                    },
+                    "404": {
+                        "description": "Pregunta no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getAnswers": {
+            "get": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Obtiene todos las respuestas",
+                "description": "Regresa todos los respuestas",
+                "operationId": "getAnswers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getAnswer/{answer_id}": {
+            "get": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Encuentra una respuesta por id",
+                "description": "Regresa la respuesta con el id solicitado",
+                "operationId": "getAnswer",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "answer_id",
+                        "description": "Id de la respuesta a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addAnswer": {
+            "post": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Agrega una nueva respuesta",
+                "description": "Agrega una respuesta a la base de datos",
+                "operationId": "addAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nueva respuesta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateAnswer/{answer_id}": {
+            "put": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Actualiza una respuesta",
+                "description": "Actualiza una respuesta en la base de datos",
+                "operationId": "updateAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "answer_id",
+                        "description": "Id de la respuesta a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nueva respuesta",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    },
+                    "400": {
+                        "description": "Respuesta Inválido"
+                    },
+                    "404": {
+                        "description": "Respuesta no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteAnswwer/{answer_id}": {
+            "delete": {
+                "tags": [
+                    "Question&Answer"
+                ],
+                "summary": "Borra una respuesta",
+                "description": "Borra una respuesta de la base de datos",
+                "operationId": "deleteAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "answer_id",
+                        "description": "Id de la respuesta a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Answer"
+                        }
+                    },
+                    "400": {
+                        "description": "Pregunta Inválido"
+                    },
+                    "404": {
+                        "description": "Pregunta no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/loadMemoryGame/{player_id}": {
+            "get": {
+                "tags": [
+                    "MemoryGame"
+                ],
+                "summary": "Carga un juego del MemoryGame",
+                "description": "Regresa los datos del juego",
+                "operationId": "loadMemoryGame",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "player_id",
+                        "description": "Player ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGame"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/newMemoryGame/{player_id}/{level_id}/{group_id}": {
+            "get": {
+                "tags": [
+                    "MemoryGame"
+                ],
+                "summary": "Carga un juego nuevo del MemoryGame",
+                "description": "Regresa los datos del juego",
+                "operationId": "newMemoryGame",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "player_id",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Level ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Group ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGame"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateMemoryGame/{memorygame_id}": {
+            "put": {
+                "tags": [
+                    "MemoryGame"
+                ],
+                "summary": "Actualiza un juego de MemoryGame",
+                "description": "Actualiza los datos del juego",
+                "operationId": "updateMemoryGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "memorygame_id",
+                        "description": "Id del juego a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos del juego a actualizar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGame"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGame"
+                        }
+                    },
+                    "400": {
+                        "description": "Juego Inválido"
+                    },
+                    "404": {
+                        "description": "Juego no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/loadMemoryGameSession/{game_id}": {
+            "get": {
+                "tags": [
+                    "MemoryGame"
+                ],
+                "summary": "Carga la sesión del juego de MemoryGame",
+                "description": "Regresa los datos de la sesión del juego",
+                "operationId": "loadMemoryGameSession",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "game_id",
+                        "description": "Game ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameSession"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateMemoryGameSession/{game_id}": {
+            "put": {
+                "tags": [
+                    "MemoryGame"
+                ],
+                "summary": "Actualiza la sesión del juego de MemoryGame",
+                "description": "Actualiza los datos de la sesión del juego",
+                "operationId": "updateMemoryGameSession",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "game_id",
+                        "description": "Id del juego a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos del juego a actualizar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameSession"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameSession"
+                        }
+                    },
+                    "400": {
+                        "description": "Juego Inválido"
+                    },
+                    "404": {
+                        "description": "Juego no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/loadUserProgress/{user_id}/{level_id}/{group_id}": {
+            "get": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Carga el progeso del jugador de acuerdo a su nivel y su grupo",
+                "description": "Regresa los datos del progreso del jugador",
+                "operationId": "loadUserProgress",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Level ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Group ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserProgress"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateUserProgress/{user_id}/{level_id}/{group_id}": {
+            "put": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Actualiza el progeso del jugador de acuerdo a su nivel y su grupo",
+                "description": "Actualiza los datos del progreso del jugador",
+                "operationId": "updateUserProgress",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Level ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Group ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos del progreso de jugador a actualizar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserProgress"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserProgress"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/loadMemoryGameProgress/{user_id}/{level_id}/{group_id}": {
+            "get": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Carga el progeso del jugador en el Memorama de acuerdo a su nivel y su grupo",
+                "description": "Regresa los datos del progreso del jugador en el Memorama",
+                "operationId": "loadMemoryGameProgress",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Level ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Group ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameProgress"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateMemoryGameProgress/{user_id}/{level_id}/{group_id}": {
+            "put": {
+                "tags": [
+                    "Game"
+                ],
+                "summary": "Actualiza el progeso del jugador en el Memomaram de acuerdo a su nivel y su grupo",
+                "description": "Actualiza los datos del progreso del jugador en el Memorama",
+                "operationId": "updateMemoryGameProgress",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Level ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Group ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos del progreso de jugador a actualizar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameProgress"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MemoryGameProgress"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getDocuments": {
+            "get": {
+                "tags": [
+                    "Document"
+                ],
+                "summary": "Obtiene todos los documentos",
+                "description": "Regresa todos los documentos",
+                "operationId": "getDocuments",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getDocument/{document_id}": {
+            "get": {
+                "tags": [
+                    "Document"
+                ],
+                "summary": "Encuentra un documento por id",
+                "description": "Regresa el documento con el id solicitado",
+                "operationId": "getDocument",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "document_id",
+                        "description": "Id del documento a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addDocument": {
+            "post": {
+                "tags": [
+                    "Document"
+                ],
+                "summary": "Agrega un nuevo documento",
+                "description": "Agrega un documento a la base de datos",
+                "operationId": "addDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo avatar",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateDocument/{document_id}": {
+            "put": {
+                "tags": [
+                    "Document"
+                ],
+                "summary": "Actualiza un documento",
+                "description": "Actualiza un documento en la base de datos",
+                "operationId": "updateDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "document_id",
+                        "description": "Id del documento a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo documento",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    },
+                    "400": {
+                        "description": "Documento Inválido"
+                    },
+                    "404": {
+                        "description": "Documento no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteDocument/{document_id}": {
+            "delete": {
+                "tags": [
+                    "Document"
+                ],
+                "summary": "Borra un documento",
+                "description": "Borra un documento de la base de datos",
+                "operationId": "deleteDocument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "document_id",
+                        "description": "Id del documento a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Document"
+                        }
+                    },
+                    "400": {
+                        "description": "Documento Inválido"
+                    },
+                    "404": {
+                        "description": "Documento no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getLevels": {
+            "get": {
+                "tags": [
+                    "Level"
+                ],
+                "summary": "Obtiene todos los niveles",
+                "description": "Regresa todos los niveles",
+                "operationId": "getLevel",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getLevel/{level_id}": {
+            "get": {
+                "tags": [
+                    "Level"
+                ],
+                "summary": "Encuentra un nivel por id",
+                "description": "Regresa el nivel con el id solicitado",
+                "operationId": "getLevel",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Id del nivel a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addLevel": {
+            "post": {
+                "tags": [
+                    "Level"
+                ],
+                "summary": "Agrega un nuevo nivel",
+                "description": "Agrega un nivel a la base de datos",
+                "operationId": "addLevel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo nivel",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateLevel/{level_id}": {
+            "put": {
+                "tags": [
+                    "Level"
+                ],
+                "summary": "Actualiza un nivel",
+                "description": "Actualiza un nivel en la base de datos",
+                "operationId": "updateLevel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Id del nivel a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo documento",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    },
+                    "400": {
+                        "description": "Nivel Inválido"
+                    },
+                    "404": {
+                        "description": "Nivel no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteLevel/{level_id}": {
+            "delete": {
+                "tags": [
+                    "Level"
+                ],
+                "summary": "Borra un nivel",
+                "description": "Borra un nivel de la base de datos",
+                "operationId": "deleteLevel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Id del nivel a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Level"
+                        }
+                    },
+                    "400": {
+                        "description": "Documento Inválido"
+                    },
+                    "404": {
+                        "description": "Documento no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getGroups": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Obtiene todos los grupos",
+                "description": "Regresa todos los grupos",
+                "operationId": "getGroups",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getGroup/{group_id}": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Encuentra un grupo por id",
+                "description": "Regresa el grupo con el id solicitado",
+                "operationId": "getGroup",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Id del grupo a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addGroup": {
+            "post": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Agrega un nuevo grupo",
+                "description": "Agrega un grupo a la base de datos",
+                "operationId": "addGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo grupo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateGroup/{group_id}": {
+            "put": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Actualiza un grupo",
+                "description": "Actualiza un grupo en la base de datos",
+                "operationId": "updateGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Id del grupo a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo documento",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "400": {
+                        "description": "Grupo Inválido"
+                    },
+                    "404": {
+                        "description": "Grupo no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteGroup/{group_id}": {
+            "delete": {
+                "tags": [
+                    "Group"
+                ],
+                "summary": "Borra un grupo",
+                "description": "Borra un grupo de la base de datos",
+                "operationId": "deleteGroup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Id del grupo a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    },
+                    "400": {
+                        "description": "Documento Inválido"
+                    },
+                    "404": {
+                        "description": "Documento no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getUserTypes": {
+            "get": {
+                "tags": [
+                    "UserType"
+                ],
+                "summary": "Obtiene todos los tipos de usuario",
+                "description": "Regresa todos los tipos de usuario",
+                "operationId": "getUserTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getUserType/{user_type_id}": {
+            "get": {
+                "tags": [
+                    "UserType"
+                ],
+                "summary": "Encuentra un tipo de usuario por id",
+                "description": "Regresa el tipo de usuario con el id solicitado",
+                "operationId": "getUserType",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_type_id",
+                        "description": "Id del tipo de usuario a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addUserType": {
+            "post": {
+                "tags": [
+                    "UserType"
+                ],
+                "summary": "Agrega un nuevo tipo de usuario",
+                "description": "Agrega un tipo de usuario a la base de datos",
+                "operationId": "addUserType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo grupo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateUserType/{user_type_id}": {
+            "put": {
+                "tags": [
+                    "UserType"
+                ],
+                "summary": "Actualiza un tipo de usuario",
+                "description": "Actualiza un tipo de usuario en la base de datos",
+                "operationId": "updateUserType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_type_id",
+                        "description": "Id del tipo de usuario a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo tipo de usuario",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    },
+                    "400": {
+                        "description": "Tipo de usuario Inválido"
+                    },
+                    "404": {
+                        "description": "Tipo de usuario no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteUserType/{user_type_id}": {
+            "delete": {
+                "tags": [
+                    "UserType"
+                ],
+                "summary": "Borra un tipo de usuario",
+                "description": "Borra un tipo de usuario de la base de datos",
+                "operationId": "deleteUserType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_type_id",
+                        "description": "Id del tipo de usuario a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/UserType"
+                        }
+                    },
+                    "400": {
+                        "description": "Tipo de Usuario Inválido"
+                    },
+                    "404": {
+                        "description": "Tipo de Usuario no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getMiniGames": {
+            "get": {
+                "tags": [
+                    "MiniGame"
+                ],
+                "summary": "Obtiene todos los minijuegos",
+                "description": "Regresa todos los minijuegos",
+                "operationId": "getMiniGames",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getMiniGame/{minigame_id}": {
+            "get": {
+                "tags": [
+                    "MiniGame"
+                ],
+                "summary": "Encuentra un minijuego por id",
+                "description": "Regresa el minijuego con el id solicitado",
+                "operationId": "getMiniGame",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "minigame_id",
+                        "description": "Id del minijuego a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addMiniGame": {
+            "post": {
+                "tags": [
+                    "MiniGame"
+                ],
+                "summary": "Agrega un nuevo minijuego",
+                "description": "Agrega un minijuego a la base de datos",
+                "operationId": "addMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo minijuego",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateMiniGame/{minigame_id}": {
+            "put": {
+                "tags": [
+                    "MiniGame"
+                ],
+                "summary": "Actualiza un minijuego",
+                "description": "Actualiza un minijuegp en la base de datos",
+                "operationId": "updateMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "minigame_id",
+                        "description": "Id del minijuegpo a actualizar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo documento",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    },
+                    "400": {
+                        "description": "Minijuego Inválido"
+                    },
+                    "404": {
+                        "description": "Minijuego no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteMiniGame/{minigame_id}": {
+            "delete": {
+                "tags": [
+                    "MiniGame"
+                ],
+                "summary": "Borra un minijuego",
+                "description": "Borra un mninijuego de la base de datos",
+                "operationId": "deleteMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "minigame_id",
+                        "description": "Id del mninijuego a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/MiniGame"
+                        }
+                    },
+                    "400": {
+                        "description": "Minijuego Inválido"
+                    },
+                    "404": {
+                        "description": "Minijuego no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/getLevelGroupMiniGame/{level_id}/{group_id}/{minigame_id}": {
+            "get": {
+                "tags": [
+                    "LevelGroupMiniGame"
+                ],
+                "summary": "Encuentra un minijuego por id",
+                "description": "Regresa el minijuego con el id solicitado",
+                "operationId": "getMiniGame",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Id del nivel a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Id del grupo a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "minigame_id",
+                        "description": "Id del minijuego a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/addLevelGroupMiniGame": {
+            "post": {
+                "tags": [
+                    "LevelGroupMiniGame"
+                ],
+                "summary": "Agrega un nuevo minijuego",
+                "description": "Agrega un minijuego a la base de datos",
+                "operationId": "addMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Nuevo minijuego",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    },
+                    "405": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/updateLevelGroupMiniGame/{level_id}/{group_id}/{minigame_id}": {
+            "put": {
+                "tags": [
+                    "LevelGroupMiniGame"
+                ],
+                "summary": "Actualiza un minijuego",
+                "description": "Actualiza un minijuegp en la base de datos",
+                "operationId": "updateMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "level_id",
+                        "description": "Id del nivel a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "group_id",
+                        "description": "Id del grupo a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "path",
+                        "name": "minigame_id",
+                        "description": "Id del minijuego a obtener",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Datos nuevo documento",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    },
+                    "400": {
+                        "description": "Minijuego Inválido"
+                    },
+                    "404": {
+                        "description": "Minijuego no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/deleteLevelGroupMiniGame/{levelgroupminigame_id}": {
+            "delete": {
+                "tags": [
+                    "LevelGroupMiniGame"
+                ],
+                "summary": "Borra un minijuego",
+                "description": "Borra un mninijuego de la base de datos",
+                "operationId": "deleteMiniGame",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "levelgroupminigame_id",
+                        "description": "Id del mninijuego a borrar",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/LevelGroupMiniGame"
+                        }
+                    },
+                    "400": {
+                        "description": "Minijuego Inválido"
+                    },
+                    "404": {
+                        "description": "Minijuego no encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Usuario": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "id_grupo": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "tipo": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "estatus": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserLastLogin": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "last_login": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Started date and time",
+                    "example": "2021-04-03T08:30:00Z"
+                }
+            }
+        },
+        "UserPassword": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Jugador": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "puntaje": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Avatar": {
+            "type": "object",
+            "properties": {
+                "avatar_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "avatar_name": {
+                    "type": "string"
+                },
+                "avatar": {
+                    "type": "string"
+                }
+            }
+        },
+        "PlayerUserAvatar": {
+            "type": "object",
+            "properties": {
+                "player_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_name": {
+                    "type": "string"
+                },
+                "player_name": {
+                    "type": "string"
+                },
+                "level_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "avatar_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "avatar_name": {
+                    "type": "string"
+                },
+                "avatar": {
+                    "type": "string"
+                },
+                "points": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Question": {
+            "type": "object",
+            "properties": {
+                "question_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "level_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "question_des": {
+                    "type": "string"
+                },
+                "question_image": {
+                    "type": "string"
+                }
+            }
+        },
+        "Answer": {
+            "type": "object",
+            "properties": {
+                "answer_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "question_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "answer_desc": {
+                    "type": "string"
+                },
+                "answer_image": {
+                    "type": "string"
+                },
+                "answer_correct": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "MemoryGame": {
+            "type": "object",
+            "properties": {
+                "memorygame_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "game_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "question_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "question_desc": {
+                    "type": "string"
+                },
+                "question_image": {
+                    "type": "string"
+                },
+                "found": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "MemoryGameSession": {
+            "type": "object",
+            "properties": {
+                "game_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "player_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "date_started": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Started date and time",
+                    "example": "2021-04-03T08:30:00Z"
+                },
+                "date_finished": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Finished date and time",
+                    "example": "2021-04-03T08:30:00Z"
+                },
+                "attempts": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "finished": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "UserProgress": {
+            "type": "object",
+            "properties": {
+                "minigame_1": {
+                    "type": "boolean"
+                },
+                "minigame_1_image": {
+                    "type": "string"
+                },
+                "minigame_1_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_2": {
+                    "type": "boolean"
+                },
+                "minigame_2_image": {
+                    "type": "string"
+                },
+                "minigame_2_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_3": {
+                    "type": "boolean"
+                },
+                "minigame_3_image": {
+                    "type": "string"
+                },
+                "minigame_3_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_4": {
+                    "type": "boolean"
+                },
+                "minigame_4_image": {
+                    "type": "string"
+                },
+                "minigame_4_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_5": {
+                    "type": "boolean"
+                },
+                "minigame_5_image": {
+                    "type": "string"
+                },
+                "minigame_5_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_6": {
+                    "type": "boolean"
+                },
+                "minigame_6_image": {
+                    "type": "string"
+                },
+                "minigame_6_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "MemoryGameProgress": {
+            "type": "object",
+            "properties": {
+                "minigame_1": {
+                    "type": "boolean"
+                },
+                "minigame_1_image": {
+                    "type": "string"
+                },
+                "minigame_1_document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "Document": {
+            "type": "object",
+            "properties": {
+                "document_id": {
+                    "type": "int",
+                    "format": "int64"
+                },
+                "document_name": {
+                    "type": "string"
+                },
+                "document_summary": {
+                    "type": "string"
+                },
+                "document_image": {
+                    "type": "string"
+                },
+                "document_preview_image": {
+                    "type": "string"
+                },
+                "document_url": {
+                    "type": "string"
+                },
+                "video": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Group": {
+            "type": "object",
+            "properties": {
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "group_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Level": {
+            "type": "object",
+            "properties": {
+                "level_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "level_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserType": {
+            "type": "object",
+            "properties": {
+                "user_type_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_type_desc": {
+                    "type": "string"
+                }
+            }
+        },
+        "MiniGame": {
+            "type": "object",
+            "properties": {
+                "minigame_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_name": {
+                    "type": "string"
+                },
+                "minigame_image": {
+                    "type": "string"
+                }
+            }
+        },
+        "LevelGroupMiniGame": {
+            "type": "object",
+            "properties": {
+                "levelgroupminigame_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "level_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "group_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minigame_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "document_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        }
+    }
+}
